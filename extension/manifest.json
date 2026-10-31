@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "ConsentGuard \u2014 Personal Consent Manager",
+  "version": "1.0.0",
+  "description": "Review supported consent notices and record purpose-specific choices.",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1:8000/*",
+    "http://localhost:5173/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "ConsentGuard"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://localhost:5173/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
